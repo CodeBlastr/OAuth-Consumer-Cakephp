@@ -53,20 +53,19 @@ class OAuthClient {
 
 /**
  * Full Socket Request (as customizable as it gets)
+ * 
+ * @param array(
+ *	'method' => 'POST / GET',
+ *	'uri' => 'http://someApiUri.com',
+ *	'header' => array(
+ *		'Authorization' => 'OAuth yahjoo23.as0dfu2390jasoi2oj',
+ *		'Content-Type' => 'multipart/form-data; boundary=[some boundary]'
+ *		),
+ *	'body' => 'some body text'
+ *	);
  */
- 	public function getFullRequest($request = array('method' => 'POST')) {
-        $socket = new HttpSocket();
-		
-		$requestSample = array(
-			'method' => 'POST',
-			'uri' => 'http://someApiUri.com',
-			'header' => array(
-				'Authorization' => 'OAuth yahjoo23.as0dfu2390jasoi2oj',
-				'Content-Type' => 'multipart/form-data; boundary=[some boundary]'
-				),
-			'body' => 'some body text'
-			); // this variable is not used, its just a sample
-										 						 
+ 	public function request($request = array('method' => 'POST')) {
+        $socket = new HttpSocket();									 						 
         $result = $socket->request($request);
         $this->fullResponse = $result;
 		return $result;	
